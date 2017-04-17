@@ -40,10 +40,10 @@ def get_all_links(page):
             break
     return links
 
-def crawl_web(seed):
+def crawl_web(seed,max_pages):
     tocrawl = [seed]
     crawled = []
-    while tocrawl:
+    while tocrawl and max_pages > len(crawled):
         page = tocrawl.pop()
         if page not in crawled:
             union(tocrawl,get_all_links(get_page(page)))
